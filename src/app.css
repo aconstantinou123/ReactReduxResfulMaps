@@ -1,0 +1,131 @@
+body {
+    font-family: Roboto;
+    color: #746855;
+    margin: 0;
+    padding: 0;
+    background: #17263c;
+    background-image: url('/images/world_map.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 120px;
+    background-attachment: fixed;
+}
+
+/* SEARCH */
+
+.title_text {
+    font-size: 30px
+}
+
+.search_bar {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #746855;
+    background-color: #242f3e;
+}
+
+.search_bar input {
+    border-radius: 30px;
+    border: 1px solid #746855;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 300;
+}
+
+.search_bar input:focus {
+    outline: none;
+}
+
+/* COUNTRY */
+
+.country_not_found {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.country_item {
+    display: flex;
+    border: 1px solid  #746855;;
+    margin: 10px;
+    padding: 0px;
+    background-color: rgb(213, 149, 99, 0.1);
+}
+
+.country_item .left {
+    width: 300px;
+}
+
+.country_item .left img {
+    width: 300px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.country_item .right {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.country_item .right h4,
+.country_item .right h6 {
+    margin: 0px;
+}
+
+.country_info {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    background: #17263c;
+}
+
+.country_info .left {
+    width: 320px;
+    padding: 10px;
+    border: #746855 solid 1px;
+}
+
+.country_info .left h5 {
+    margin: 0px;
+}
+
+.country_info .left h6 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.country_info .left a {
+    padding-top: 10px;
+}
+
+.country_info .left .home_link {
+    position: fixed;
+    bottom: 10px;
+}
+
+.country_info .left img {
+    width: 320px;
+    padding: 0px;
+}
+
+.country_info .right {
+    position: relative;
+    padding: 0px;
+}
+
+p {
+    font-size: 12px;
+}
+
+/* LINKS */
+
+a {
+    text-decoration: none;
+    color:  #746855;
+}
+
+a :hover {
+    color: #d59563;
+}
