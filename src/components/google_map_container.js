@@ -4,10 +4,6 @@ import { mapStyling } from '../google_map-styles'
 
 export class GoogleMapContainer extends Component {
 
-    componentDidMount(){
-        console.log(this.props.countryInfo)
-    }
-
     calculateZoom(countryArea){
         if(countryArea > 15000000){
             return 3
@@ -37,7 +33,6 @@ export class GoogleMapContainer extends Component {
             marginRight: 'auto'
           }
         if(this.props.countryInfo.length !== 0){
-            console.log(this.props.countryInfo.latlng)
         return(
             <div style={style}>
                 <Map google={window.google} zoom={this.calculateZoom(this.props.countryInfo.area)}
