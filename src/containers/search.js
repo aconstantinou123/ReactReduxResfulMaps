@@ -26,7 +26,7 @@ class Search extends Component {
     render(){
         return (
             <div>
-                <div>
+                <div className='favourites-link'>
                     <Link to='/favourites'>Favourites</Link>
                 </div>
                 <div className='search_bar'>

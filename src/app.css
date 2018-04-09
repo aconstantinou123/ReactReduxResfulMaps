@@ -13,6 +13,13 @@ body {
 
 /* SEARCH */
 
+.favourites-link {
+    background-color: #242f3e;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
 .title_text {
     font-size: 30px
 }
@@ -77,13 +84,13 @@ body {
     display: flex;
     margin: 0px;
     padding: 0px;
-    background: #17263c;
+    background: #17263c;  
 }
 
 .country_info .left {
     width: 320px;
     padding: 10px;
-    border: #746855 solid 1px;
+    border: #746855 solid 1px; 
 }
 
 .country_info .left h5 {
@@ -118,6 +125,12 @@ body {
     border: none;
     border-radius: 8px;
     color: #242f3e;
+    outline: none;
+}
+
+.country_info .left .favourites-button:hover {
+    transition-duration: 0.4s;
+    background-color: #d59563;
 }
 
 .country_info .right {
@@ -136,7 +149,7 @@ a {
     color:  #746855;
 }
 
-a :hover {
+a:hover {
     color: #d59563;
 }
 
@@ -151,4 +164,11 @@ a :hover {
 
 .no-favourites {
     text-align: center;
+}
+
+.home-link {
+    background-color: #242f3e;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 18px;
 }

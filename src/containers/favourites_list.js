@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getFavourites } from '../actions/favourites_action'
+import { Link } from 'react-router-dom'
 import Country from '../components/country'
 
 class FavouritesList extends Component {
@@ -29,6 +30,9 @@ class FavouritesList extends Component {
     render(){
         return(
             <div>
+                <div className='home-link'>
+                    <Link to='/'>Home</Link>
+                </div>
                 <div className='favourites_title'>
                     <h1>My Favourite Countries</h1>
                 </div>
