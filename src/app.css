@@ -110,6 +110,16 @@ body {
     padding: 0px;
 }
 
+.country_info .left .favourites-button {
+    margin-top: 20px;
+    padding: 10px 24px;
+    background-color: #746855;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #242f3e;
+}
+
 .country_info .right {
     position: relative;
     padding: 0px;
@@ -128,4 +138,17 @@ a {
 
 a :hover {
     color: #d59563;
+}
+
+/* FAVOURITES */
+
+.favourites_title {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #746855;
+    background-color: #242f3e;
+}
+
+.no-favourites {
+    text-align: center;
 }

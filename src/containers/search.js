@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { listCountries } from '../actions/country_action'
+import { Link } from 'react-router-dom'
 
 class Search extends Component {
     constructor(props){
@@ -24,11 +25,16 @@ class Search extends Component {
 
     render(){
         return (
-            <div className='search_bar'>
-                <div className='title_text'>Search for a country</div>
-                <form onSubmit={this.searchCountry}>
-                    <input type='text' onChange={this.handleChange}/>
-                </form>
+            <div>
+                <div>
+                    <Link to='/favourites'>Favourites</Link>
+                </div>
+                <div className='search_bar'>
+                    <div className='title_text'>Search for a country</div>
+                    <form onSubmit={this.searchCountry}>
+                        <input type='text' onChange={this.handleChange}/>
+                    </form>
+                </div>
             </div>
         )
     }

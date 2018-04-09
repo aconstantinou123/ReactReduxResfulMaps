@@ -9,6 +9,7 @@ import reducers from './reducers'
 
 import App from './App';
 import CountryInfo from './components/country_info'
+import FavouritesList from './containers/favourites_list';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
 
@@ -19,6 +20,7 @@ ReactDOM.render(
             <div>
                 <Route exact path='/' component={App}/>
                 <Route path ='/country/:id' component={CountryInfo}/>
+                <Route path ='/favourites' component={FavouritesList}/>
             </div>
          </BrowserRouter>
     </Provider>
