@@ -4,14 +4,16 @@ import { bindActionCreators } from 'redux'
 import { showCountryInfo, clearCountryInfo } from '../actions/country_action'
 import { Link } from 'react-router-dom'
 import { GoogleMapContainer } from './google_map_container';
-import { addToFavourites, getFavourites } from '../actions/favourites_action'
+import { addToFavourites, getFavourites, clearAddedToFavourites } from '../actions/favourites_action'
+import { ToastContainer, toast } from 'react-toastify'
+import { css } from 'glamor';
 
 class CountryInfo extends Component {
 
-
     componentWillMount(){
-       this.props.getFavourites()
-       this.props.showCountryInfo(this.props.match.params.id)
+        this.props.clearAddedToFavourites()
+        this.props.getFavourites()
+        this.props.showCountryInfo(this.props.match.params.id)
     }
 
     componentWillUnmount(){
@@ -22,12 +24,37 @@ class CountryInfo extends Component {
         if (this.props.match.params.id !== prevProps.match.params.id){
             this.props.showCountryInfo(this.props.match.params.id)
         }
+        if(this.props.favourites.favouriteAdded === true){
+            this.notify()
+            this.props.clearAddedToFavourites()
+        }
+        else if(this.props.favourites.favouriteAdded === false){
+            this.notify()
+            this.props.clearAddedToFavourites()
+        }
      }
 
-    countryListUpdated(){
-        getFavourites()
-        return <div>{this.props.favourites.favouriteCountries.length}</div>
-    }
+     notify(){
+        console.log(this.props.favourites.favouriteAdded)
+        if(this.props.favourites.favouriteAdded){
+        toast.info("Added To Favourites!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: css({
+                background: '#d59563',
+                borderRadius: '10px'
+              })
+          });
+        }
+        else{
+            toast.info("Already in Favourites", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                className: css({
+                    background: 'red',
+                    borderRadius: '10px'
+                  })
+              });
+        }
+     }
 
     checkNativeName(countryInfo){
         if(countryInfo.name !== countryInfo.nativeName){
@@ -37,7 +64,7 @@ class CountryInfo extends Component {
 
     handleClick(){
         this.props.addToFavourites(this.props.countryInfo)
-        this.props.getFavourites()
+        // this.notify()
         console.log(this.props.favourites.favouriteCountries)
     }
 
@@ -56,7 +83,7 @@ class CountryInfo extends Component {
                 <h5>Links to border countries:</h5>
                 <h5>{this.mapBoarderCountrys(countryInfo)}</h5>
                 <button className='favourites-button' onClick={this.handleClick.bind(this)}>Add To Favourites</button>
-                <div>{this.props.favourites.favouriteCountries.length}</div>
+                <ToastContainer hideProgressBar={true} autoClose={3000}/>
                 <div className='home_link'>
                     <Link to={'/'}>Home</Link>
                 </div>
@@ -89,7 +116,7 @@ class CountryInfo extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites, getFavourites }, dispatch)
+   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites, getFavourites, clearAddedToFavourites }, dispatch)
 }
 
 function mapStateToProps(state){

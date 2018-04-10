@@ -27,18 +27,13 @@ export function addToFavourites(country){
         }).then((response) => {
             dispatch({type: 'FAVOURITE_COUNTRY_ADDED', payload: response.data})
         }).catch((err) => {
-            dispatch({type: 'FAVOURITE_NOT_ADDED', payload: err})
+            dispatch({type: 'FAVOURITE_COUNTRY_NOT_ADDED', payload: err})
         })
     }
 }
 
-// axios.post('/user', {
-//     firstName: 'Fred',
-//     lastName: 'Flintstone'
-//   })
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+export function clearAddedToFavourites(){
+    return {
+        type: 'FAVOURITE_ADDED_CLEARED'
+    }
+}
