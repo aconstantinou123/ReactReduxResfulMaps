@@ -34,18 +34,27 @@ MongoClient.connect("mongodb://localhost:27017", function (err, client) {
     });
   });
 
-  server.post('/api/countries', function(req, res) {
-    db.collection('countries').update(req.body,{$set: req.body}, {upsert: true}, function (err, result){
+  //POST
+
+  server.post('/api/countries/', function(req, res) {
+    db.collection('countries').find({alpha3Code: req.body.alpha3Code}).toArray(function(err, result){
+    if (result.length !== 0){
+            console.log(result)
+            res.status(409);
+            res.send()
+            return
+    }
+    else{
+      db.collection('countries').save(req.body, function (err, result){
       if(err){
               console.log(err);
               res.status(500);
               res.send();
             }
-      
             res.status(201);
             res.json(result);
-      
-            console.log("Object Saved")
+         })
+       }
     })
   })
 

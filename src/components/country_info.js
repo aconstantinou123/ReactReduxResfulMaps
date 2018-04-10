@@ -4,11 +4,13 @@ import { bindActionCreators } from 'redux'
 import { showCountryInfo, clearCountryInfo } from '../actions/country_action'
 import { Link } from 'react-router-dom'
 import { GoogleMapContainer } from './google_map_container';
-import { addToFavourites } from '../actions/favourites_action'
+import { addToFavourites, getFavourites } from '../actions/favourites_action'
 
 class CountryInfo extends Component {
 
+
     componentWillMount(){
+       this.props.getFavourites()
        this.props.showCountryInfo(this.props.match.params.id)
     }
 
@@ -22,6 +24,11 @@ class CountryInfo extends Component {
         }
      }
 
+    countryListUpdated(){
+        getFavourites()
+        return <div>{this.props.favourites.favouriteCountries.length}</div>
+    }
+
     checkNativeName(countryInfo){
         if(countryInfo.name !== countryInfo.nativeName){
             return countryInfo.nativeName
@@ -30,6 +37,8 @@ class CountryInfo extends Component {
 
     handleClick(){
         this.props.addToFavourites(this.props.countryInfo)
+        this.props.getFavourites()
+        console.log(this.props.favourites.favouriteCountries)
     }
 
     renderCountryInfo(countryInfo){
@@ -47,6 +56,7 @@ class CountryInfo extends Component {
                 <h5>Links to border countries:</h5>
                 <h5>{this.mapBoarderCountrys(countryInfo)}</h5>
                 <button className='favourites-button' onClick={this.handleClick.bind(this)}>Add To Favourites</button>
+                <div>{this.props.favourites.favouriteCountries.length}</div>
                 <div className='home_link'>
                     <Link to={'/'}>Home</Link>
                 </div>
@@ -79,12 +89,13 @@ class CountryInfo extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites }, dispatch)
+   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites, getFavourites }, dispatch)
 }
 
 function mapStateToProps(state){
     return {
-        countryInfo: state.countries.countryInfo
+        countryInfo: state.countries.countryInfo,
+        favourites: state.favourites
     }
 }
 
