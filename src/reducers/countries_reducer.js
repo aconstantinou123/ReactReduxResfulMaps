@@ -5,7 +5,6 @@ const defaultState = {
 }
 
 export default function(state = defaultState, action){
-    console.log(action.type)
     switch(action.type){
         case 'SEARCH_COUNTRY':
             return {...state, countriesFound: action.payload, countryNotFound: false}

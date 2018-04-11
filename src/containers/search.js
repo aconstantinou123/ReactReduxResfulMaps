@@ -26,8 +26,9 @@ class Search extends Component {
     render(){
         return (
             <div>
-                <div className='favourites-link'>
+                <div className='main-page-link'>
                     <Link to='/favourites'>Favourites</Link>
+                    <Link to='/my_trips'>My Trips</Link>
                 </div>
                 <div className='search_bar'>
                     <div className='title_text'>Search for a country</div>
