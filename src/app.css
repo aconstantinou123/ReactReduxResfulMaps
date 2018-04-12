@@ -154,6 +154,59 @@ p {
     font-size: 12px;
 }
 
+/* TRIP */
+
+.trip_list {
+    margin-right: auto;
+    margin-left: auto;
+    width:87vw;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.trip_item {
+    width: 40vw;
+    text-align: center;
+    border: 1px solid  #746855;;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(213, 149, 99, 0.2);
+}
+
+.trip_item h2,
+.trip_item h3 {
+    color: #d59563;
+}
+
+.trip_image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 300px;
+}
+
+.trip_image img {
+    width: 300px;
+}
+
+.trip_item .trip_body {
+    padding: 10px;
+}
+
+.trip_item .trip_body p {
+    font-size: 15px;
+    color: #d59563;
+} 
+
+.trip-item {
+    display: flex;
+    border: 1px solid  #746855;;
+    margin: 10px;
+    padding: 0px;
+    background-color: rgb(213, 149, 99, 0.1);
+}
+
 /* LINKS */
 
 a {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { listAllTrips } from '../actions/my_trips_action'
+
+import Trip from '../components/trip'
 
 class MyTripList extends Component {
 
@@ -18,7 +20,7 @@ componentDidRecieveProps(){
 renderTrips(myTrips){
     if(myTrips){
         return myTrips.map(trip => {
-            return <div key={trip._id}>{trip.name}</div>
+            return <Trip key={trip._id} trip={trip}/>
         })
     }
 }
@@ -26,10 +28,14 @@ renderTrips(myTrips){
     render(){
         return(
             <div>
+                 <div className='main-page-link'>
+                    <Link to='/'>Home</Link>
+                    <Link to='/favourites'>Favourites</Link>
+                </div>
                 <div className='favourites_title'>
                     <h1>My Trips</h1>
                 </div>
-                <div>{this.renderTrips(this.props.myTrips.myTripsFound)}</div>
+                <div className='trip_list'>{this.renderTrips(this.props.myTrips.myTripsFound)}</div>
             </div>
         )
     }
