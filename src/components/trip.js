@@ -6,7 +6,7 @@ const Trip = ({ trip }) => {
     
     return (
         <div className='trip_item'>
-            <div className>
+            <div>
                 <h2>{trip.name}</h2>
             <h3>{trip.dates}</h3>
                     <div className='trip_image'>

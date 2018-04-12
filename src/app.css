@@ -27,7 +27,8 @@ body {
 }
 
 .title_text {
-    font-size: 30px
+    font-size: 30px;
+    color: #d59563;
 }
 
 .search_bar {
@@ -221,6 +222,7 @@ a:hover {
 /* FAVOURITES */
 
 .favourites_title {
+    color: #d59563;
     text-align: center;
     padding: 20px;
     border-bottom: 1px solid #746855;
