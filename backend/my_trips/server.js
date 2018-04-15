@@ -4,12 +4,14 @@ const server = express();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const cors = require('cors');
+const { dbUrl } = require('./config/database')
+
 server.use(cors());
 
 server.use(parser.json());
 server.use(parser.urlencoded({extended:true}));
 
-MongoClient.connect("mongodb://localhost:27017", function (err, client) {
+MongoClient.connect(dbUrl, function (err, client) {
   if(err){
     console.log(err);
     return;

@@ -1,3 +1,3 @@
 module.exports = {
-    dbUrl: 'mongodb://mongodb/favourite_countries'
+    dbUrl: 'mongodb://my_mongodb/favourite_countries'
  }

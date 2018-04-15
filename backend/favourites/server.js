@@ -5,6 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const cors = require('cors');
 const { dbUrl } = require('./config/database')
+const { favouriteCountries } = require('./seeds')
 
 server.use(cors());
 
@@ -23,6 +24,10 @@ MongoClient.connect(dbUrl, function (err, client) {
   //GET ALL
 
   server.get('/api/countries', function (req, res) {
+  db.collection('countries').remove({})
+  favouriteCountries.forEach((country) => {
+    db.collection('countries').insert(country)
+  })
     db.collection('countries').find().toArray(function (err, result) {
       if (err) {
         console.log(err);

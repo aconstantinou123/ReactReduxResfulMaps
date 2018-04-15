@@ -1,35 +1,31 @@
-# version: "3"
-# services:
-#   favourites:
-#     container_name: favouritesdb
-#     build: ./backend/favourites
-#     ports:
-#     - "5000:5000"
-#     depends_on:
-#     - mongo
-#   mongo:
-#     image: mongo
-#     ports:
-#     - "27017:27017"
-
-
 version: '3'
 services:
-  mongodb:
+  my_mongodb:
     image: mongo:latest
-    container_name: mongodb
+    container_name: my_mongodb
     ports:
         - '27017:27017'
     volumes:
       - ./mongodb/data:/data/db
   favourites:
-    container_name: favouritedb
+    container_name: favouritesdb
     build: ./backend/favourites
     volumes:
       - ./backend/favourites:/code
     ports:
       - "5000:5000"
     links:
-      - mongodb
+      - my_mongodb
     depends_on:
-      - mongodb
+      - my_mongodb
+  my_trips:
+    container_name: my_tripsdb
+    build: ./backend/my_trips
+    volumes:
+      - ./backend/my_trips:/code
+    ports:
+      - "5001:5001"
+    links:
+      - my_mongodb
+    depends_on:
+      - my_mongodb

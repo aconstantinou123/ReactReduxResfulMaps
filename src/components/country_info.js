@@ -7,6 +7,7 @@ import { GoogleMapContainer } from './google_map_container';
 import { addToFavourites, getFavourites, clearAddedToFavourites } from '../actions/favourites_action'
 import { ToastContainer, toast } from 'react-toastify'
 import { css } from 'glamor';
+import AddToTripsModal from './add_to_trips_modal';
 
 class CountryInfo extends Component {
 
@@ -71,26 +72,29 @@ class CountryInfo extends Component {
     renderCountryInfo(countryInfo){
         if(countryInfo){
         return(
-        <div className='country_info'>
-            <div className='left'>
-                <h1>{countryInfo.name}</h1>
-                <h2>{this.checkNativeName(countryInfo)}</h2>
-                <img src={countryInfo.flag} alt={countryInfo.alpha2Code}/>
-                <h5>Population: {countryInfo.population}</h5>
-                <h5>Region: {countryInfo.region}</h5>
-                <h6>Country Information</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h5>Links to border countries:</h5>
-                <h5>{this.mapBoarderCountrys(countryInfo)}</h5>
-                <button className='favourites-button' onClick={this.handleClick.bind(this)}>Add To Favourites</button>
-                <ToastContainer hideProgressBar={true} autoClose={3000}/>
-                <div className='home_link'>
-                    <Link to={'/'}>Home</Link>
+        <div>
+            <div className='country_info'>
+                <div className='left'>
+                    <h1>{countryInfo.name}</h1>
+                    <h2>{this.checkNativeName(countryInfo)}</h2>
+                    <img src={countryInfo.flag} alt={countryInfo.alpha2Code}/>
+                    <h5>Population: {countryInfo.population}</h5>
+                    <h5>Region: {countryInfo.region}</h5>
+                    <h6>Country Information</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h5>Links to border countries:</h5>
+                    <h5>{this.mapBoarderCountrys(countryInfo)}</h5>
+                    <button className='favourites-button' onClick={this.handleClick.bind(this)}>Add To Favourites</button>
+                    <ToastContainer hideProgressBar={true} autoClose={3000}/>
+                    <div className='home_link'>
+                        <Link to={'/'}>Home</Link>
+                    </div>
+                </div>
+                <div className='right'>
+                    <GoogleMapContainer className='map_container'countryInfo={this.props.countryInfo}/>
                 </div>
             </div>
-            <div className='right'>
-                <GoogleMapContainer className='map_container'countryInfo={this.props.countryInfo}/>
-            </div>
+            <AddToTripsModal/>
         </div>
         )
         }
