@@ -47,6 +47,7 @@ MongoClient.connect(dbUrl, function (err, client) {
             }
             res.status(201);
             res.json(result);
+            console.log('add to trips')
         })
     })
 
