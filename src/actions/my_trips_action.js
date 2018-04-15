@@ -12,3 +12,27 @@ export function listAllTrips() {
             })
         }
     }
+
+    export function addToMyTrips(trip){
+        return function(dispatch){
+            axios.post(`${MY_TRIPS_URL}`, {
+                flag: trip.flag,
+                latlng: trip.latlng,
+                name: trip.name,
+                startDate: trip.startDate,
+                endDate: trip.endDate,
+                description: trip.description,
+                photos: trip.photos
+            }).then((response) => {
+                dispatch({type: 'TRIP_ADDED', payload: response.data})
+            }).catch((err) => {
+                dispatch({type: 'TRIP_NOT_ADDED', payload: err})
+            })
+        }
+    }
+
+export function toggleModalOpen(){
+    return {
+        type: "TOGGLE MODAL",
+    }
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { showCountryInfo, clearCountryInfo } from '../actions/country_action'
+import { toggleModalOpen }from '../actions/my_trips_action'
 import { Link } from 'react-router-dom'
 import { GoogleMapContainer } from './google_map_container';
 import { addToFavourites, getFavourites, clearAddedToFavourites } from '../actions/favourites_action'
@@ -65,8 +66,11 @@ class CountryInfo extends Component {
 
     handleClick(){
         this.props.addToFavourites(this.props.countryInfo)
-        // this.notify()
         console.log(this.props.favourites.favouriteCountries)
+    }
+
+    handleAddToTripsClick(){
+        this.props.toggleModalOpen()
     }
 
     renderCountryInfo(countryInfo){
@@ -85,6 +89,7 @@ class CountryInfo extends Component {
                     <h5>Links to border countries:</h5>
                     <h5>{this.mapBoarderCountrys(countryInfo)}</h5>
                     <button className='favourites-button' onClick={this.handleClick.bind(this)}>Add To Favourites</button>
+                    <button className='favourites-button' onClick={this.handleAddToTripsClick.bind(this)}>Add To My Trips</button>
                     <ToastContainer hideProgressBar={true} autoClose={3000}/>
                     <div className='home_link'>
                         <Link to={'/'}>Home</Link>
@@ -94,7 +99,7 @@ class CountryInfo extends Component {
                     <GoogleMapContainer className='map_container'countryInfo={this.props.countryInfo}/>
                 </div>
             </div>
-            <AddToTripsModal/>
+            <AddToTripsModal toggleModal={this.handleAddToTripsClick.bind(this)}/>
         </div>
         )
         }
@@ -120,13 +125,14 @@ class CountryInfo extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites, getFavourites, clearAddedToFavourites }, dispatch)
+   return bindActionCreators({ showCountryInfo, clearCountryInfo, addToFavourites, getFavourites, clearAddedToFavourites, toggleModalOpen }, dispatch)
 }
 
 function mapStateToProps(state){
     return {
         countryInfo: state.countries.countryInfo,
-        favourites: state.favourites
+        favourites: state.favourites,
+        myTrips: state.myTrips
     }
 }
 

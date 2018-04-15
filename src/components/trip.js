@@ -8,7 +8,8 @@ const Trip = ({ trip }) => {
         <div className='trip_item'>
             <div>
                 <h2>{trip.name}</h2>
-            <h3>{trip.dates}</h3>
+            <h3>{trip.startDate}</h3>
+            <h3>{trip.startDate}</h3>
                     <div className='trip_image'>
                         <img src={trip.flag} alt={trip.name}/>
                     </div>
