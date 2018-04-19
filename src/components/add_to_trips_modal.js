@@ -77,8 +77,7 @@ class AddToTripsModal extends Component{
               <input type="file"  accept="image/*" onChange={this.fileChangedHandler}/>
               <div className='modal-button-div'>
                   <input className='modal-button' type='submit' onClick={this.props.toggleModal} value='Cancel'/>
-                  <input className='modal-button' type='submit' onClick={this.submitTrip} value='Add to 
-                  Favourites'/>
+                  <input className='modal-button' type='submit' onClick={this.submitTrip} value='Add to My Trips'/>
               </div>
             </form>
         </div>

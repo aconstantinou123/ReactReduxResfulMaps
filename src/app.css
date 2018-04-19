@@ -237,6 +237,11 @@ p {
     flex-wrap: wrap;
 }
 
+.trip_list h1{
+   font-size: 50px;
+   padding-left: 240px;
+}
+
 .trip_item {
     width: 40vw;
     text-align: center;
@@ -279,6 +284,22 @@ p {
     background-color: rgb(213, 149, 99, 0.1);
 }
 
+.trip-button {
+    margin-left: 10px;
+    padding: 10px 24px;
+    background-color: #746855;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #242f3e;
+    outline: none;
+}
+
+.trip-button:hover {
+    transition-duration: 0.4s;
+    background-color: #d59563;
+}
+
 /* LINKS */
 
 a {
@@ -309,6 +330,13 @@ a:hover {
     padding-top: 10px;
     padding-left: 10px;
     font-size: 18px;
+}
+
+.map-title{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
 }
 
 /* MODAL */

@@ -22,7 +22,7 @@ class FavouritesList extends Component {
              })
         }
         else {
-            return <h1 className='no-favourites'>No favourites found!</h1>
+            return <h1 className='no-favourites'>No bucket list found!</h1>
         }
     }
     
@@ -34,7 +34,7 @@ class FavouritesList extends Component {
                     <Link to='/'>Home</Link>
                 </div>
                 <div className='favourites_title'>
-                    <h1>My Favourite Countries</h1>
+                    <h1>My Bucket List</h1>
                 </div>
                 <div>
                     <div>{this.mapCountries(this.props.favourites.favouriteCountries)}</div>

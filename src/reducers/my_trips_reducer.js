@@ -3,6 +3,7 @@ const defaultState = {
     myTripsNotFound: false,
     modalIsShowing: false,
     tripAdded: null,
+    tripDeleted: false
 }
 
 export default function(state = defaultState, action){
@@ -12,12 +13,16 @@ export default function(state = defaultState, action){
             return {...state, myTripsFound: action.payload, myTripsNotFound: false}
         case 'TRIPS_NOT_FOUND':
             return {...state, myTripsNotFound: true}
-        case 'TOGGLE MODAL':
+        case 'TOGGLE_MODAL':
             return {...state, modalIsShowing: !state.modalIsShowing}
-        case 'TRIP ADDED':
+        case 'TRIP_ADDED':
             return {...state, tripAdded: true}
-        case 'TRIP NOT ADDED':
+        case 'TRIP_NOT_ADDED':
             return {...state, tripAdded: false}
+        case 'TRIP_DELETED':
+            return {...state, tripDeleted: true}
+        case 'TRIP_NOT_DELETED':
+            return {...state}
         default:
             return state
     }

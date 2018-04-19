@@ -13,6 +13,19 @@ export function listAllTrips() {
         }
     }
 
+    export function deleteTrip(tripId){
+        return function(dispatch){
+            axios.delete(`${MY_TRIPS_URL}`, {params: { id: tripId }})
+            .then(response => {
+                dispatch(listAllTrips())
+                dispatch({type: 'TRIP_DELETED'})
+            }).catch((err) =>{
+                dispatch({type: 'TRIP_NOT_DELETED'})
+                console.log(err)
+            })
+        }
+    }
+
     export function addPhotoToMyTrips(trip){
         return function(dispatch){
             const data = new FormData();
@@ -55,6 +68,6 @@ export function listAllTrips() {
 
 export function toggleModalOpen(){
     return {
-        type: "TOGGLE MODAL",
+        type: "TOGGLE_MODAL",
     }
 }
