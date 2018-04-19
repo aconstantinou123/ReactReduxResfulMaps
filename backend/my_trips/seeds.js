@@ -1,30 +1,125 @@
 module.exports = {
-    myTrips: [{
-            flag: "https://restcountries.eu/data/chn.svg",
-            latlng:[35, 105],
-            name:"China",
-            startDate: "2017-06-23T23:00:00.000Z",
-            endDate: "2017-07-29T22:59:59.999Z",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            photos:[]
+    myTrips: [
+        {
+            "flag": "https://restcountries.eu/data/cze.svg",
+            "startDate": "Thu Mar 01 2018 00:00:00 GMT+0000",
+            "endDate": "Tue Apr 17 2018 23:59:59 GMT+0100",
+            "latlng": "49.75,15.5",
+            "name": "Czech Republic",
+            "description": "Wow wow wow what a fantastic place",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "armada.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954405937.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954405937.jpg",
+                    "size": 52556
+                }
+            ]
         },
         {
-            flag: "https://restcountries.eu/data/rus.svg",
-            latlng:[60, 100],
-            name:"Russia",
-            startDate: "2016-12-22T00:00:00.000Z",
-            endDate: "2017-01-05T23:59:59.999Z",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            photos:[]
+            "flag": "https://restcountries.eu/data/bol.svg",
+            "startDate": "Wed Mar 21 2018 00:00:00 GMT+0000",
+            "endDate": "Tue Apr 10 2018 23:59:59 GMT+0100",
+            "latlng": "-17,-65",
+            "name": "Bolivia (Plurinational State of)",
+            "description": "So Bolivia",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "mustang.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954440112.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954440112.jpg",
+                    "size": 92103
+                }
+            ]
         },
         {
-            flag: "https://restcountries.eu/data/vnm.svg",
-            latlng:[16.16666666, 107.83333333],
-            name:"Viet Nam",
-            startDate: "2018-03-07T00:00:00.000Z",
-            endDate: "2018-04-02T22:59:59.999Z",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            photos:[]
+            "flag": "https://restcountries.eu/data/chn.svg",
+            "startDate": "Wed Apr 12 2017 00:00:00 GMT+0100",
+            "endDate": "Wed May 31 2017 23:59:59 GMT+0100",
+            "latlng": "35,105",
+            "name": "China",
+            "description": "Another holiday? You so crazy!",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "China.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954492789.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954492789.jpg",
+                    "size": 275706
+                }
+            ]
+        },
+        {
+            "flag": "https://restcountries.eu/data/vnm.svg",
+            "startDate": "Tue Jan 24 2017 00:00:00 GMT+0000",
+            "endDate": "Tue Feb 14 2017 23:59:59 GMT+0000",
+            "latlng": "16.16666666,107.83333333",
+            "name": "Viet Nam",
+            "description": "Didn't you live here?",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "highlight-vietnam-9-min.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954605071.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954605071.jpg",
+                    "size": 245550
+                }
+            ]
+        },
+        {
+            "flag": "https://restcountries.eu/data/khm.svg",
+            "startDate": "Wed Mar 15 2017 00:00:00 GMT+0000",
+            "endDate": "Wed Apr 05 2017 23:59:59 GMT+0100",
+            "latlng": "13,105",
+            "name": "Cambodia",
+            "description": "Holy moly its hot!",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "cambodia.jpg.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954657085.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954657085.jpg",
+                    "size": 391344
+                }
+            ]
+        },
+        {
+            "flag": "https://restcountries.eu/data/usa.svg",
+            "startDate": "Thu Oct 06 2016 00:00:00 GMT+0100",
+            "endDate": "Mon Nov 07 2016 23:59:59 GMT+0000",
+            "latlng": "38,-97",
+            "name": "United States of America",
+            "description": "Can you taste the freedom",
+            "photos": [
+                {
+                    "fieldname": "tripPicture",
+                    "originalname": "freedom-tower.jpg",
+                    "encoding": "7bit",
+                    "mimetype": "image/jpeg",
+                    "destination": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files",
+                    "filename": "tripPicture-1523954924825.jpg",
+                    "path": "/Users/alex/projects/redux_restful_countries/ReactReduxResfulMaps/backend/my_trips/files/tripPicture-1523954924825.jpg",
+                    "size": 44776
+                }
+            ]
         }
-    ] 
-}
+    ]
+
+}    

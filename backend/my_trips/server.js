@@ -89,18 +89,32 @@ server.post('/api/countries/files', function (req, res) {
   //DELETE
 
   server.delete('/api/countries', function (req, res) {
+    console.log(req.query.id)
+    if(req.query.id){
+      db.collection('my_trips').deleteOne({_id: ObjectID(req.query.id)}, function(err){
+        if(err){
+          console.log(err);
+          res.status(500);
+          res.send();
+        }
+        res.status(204);
+        res.send();
+        console.log('trip deleted');
+      });
+    }
+    else{
     db.collection('my_trips').deleteMany(function(err){
       if(err){
         console.log(err);
         res.status(500);
         res.send();
       }
-
       res.status(204);
       res.send();
 
       console.log('database deleted');
     });
+   }
   });
 
   server.listen(5001, function () {
