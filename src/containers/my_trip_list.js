@@ -10,6 +10,7 @@ import { listAllTrips } from '../actions/my_trips_action'
 
 import Trip from '../components/trip'
 import { GoogleMapTrips } from '../components/google_map_trips';
+import DeleteModal from '../components/delete_modal';
 
 class MyTripList extends Component {
 
@@ -64,9 +65,10 @@ renderTrips(myTrips){
                     <h1>My Trips</h1>
                     <h3>Scroll down to view all your trips</h3>
                 </div>
-                <div className ='my_trips_map'><GoogleMapTrips myTrips={this.props.myTrips.myTripsFound}/></div>
-                <div className='trip_list'>{this.renderTrips(this.props.myTrips.myTripsFound)}</div>
-                <ToastContainer hideProgressBar={true} autoClose={3000}/>
+                    <div className ='my_trips_map'><GoogleMapTrips myTrips={this.props.myTrips.myTripsFound}/></div>
+                    <div className='trip_list'>{this.renderTrips(this.props.myTrips.myTripsFound)}</div>
+                    <ToastContainer hideProgressBar={true} autoClose={3000}/>
+                    <DeleteModal/>
             </div>
         )
     }

@@ -71,3 +71,23 @@ export function toggleModalOpen(){
         type: "TOGGLE_MODAL",
     }
 }
+
+export function toggleDeleteModal(){
+    return {
+        type: 'TOGGLE_DELETE_MODAL'
+    }
+}
+
+export function getTripToDeleteID(id){
+    return {
+        type: 'TRIP_TO_DELETE_SELECTED',
+        payload: id
+    }
+}
+
+export function clearTripToDeleteID(){
+    return{
+        type: 'TRIP_TO_DELETE_CLEARED',
+        payload: null
+    }
+}

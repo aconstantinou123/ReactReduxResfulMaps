@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { deleteTrip, listAllTrips } from '../actions/my_trips_action'
+import { deleteTrip, listAllTrips, toggleDeleteModal, getTripToDeleteID } from '../actions/my_trips_action'
 
 class Trip extends Component {
 
     handleDeleteClicked(){
-        this.props.deleteTrip(this.props.trip._id)
+        this.props.toggleDeleteModal()
+        this.props.getTripToDeleteID(this.props.trip._id)
+        // this.props.deleteTrip(this.props.trip._id)
     }
     
     render(){
@@ -45,8 +47,14 @@ class Trip extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({ deleteTrip, listAllTrips }, dispatch)
+function mapStateToProps(state){
+    return {
+        myTrips: state.myTrips
+    }
 }
 
-export default connect(null, mapDispatchToProps)(Trip)
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({ deleteTrip, listAllTrips, toggleDeleteModal, getTripToDeleteID }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trip)
