@@ -32,7 +32,9 @@ export function listAllTrips() {
             data.append('flag', trip.flag)
             data.append('latlng', trip.latlng)
             data.append('name', trip.name);
-            data.append('tripPicture', trip.photos[0]);
+            trip.photos.forEach(photo => {
+                data.append('tripPictures', photo);
+            });
             data.append('startDate', trip.startDate)
             data.append('endDate', trip.endDate)
             data.append('description', trip.description)
@@ -75,6 +77,12 @@ export function toggleModalOpen(){
 export function toggleDeleteModal(){
     return {
         type: 'TOGGLE_DELETE_MODAL'
+    }
+}
+
+export function toggleGalleryModal(){
+    return {
+        type: 'TOGGLE_GALLERY_MODAL'
     }
 }
 

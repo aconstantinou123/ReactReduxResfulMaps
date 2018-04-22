@@ -5,6 +5,7 @@ const defaultState = {
     tripAdded: null,
     tripDeleted: false,
     deleteModalIsShowing: false,
+    galleryModalIsShowing: false,
     tripToDeleteID: null
 }
 
@@ -31,6 +32,8 @@ export default function(state = defaultState, action){
             return {...state, tripToDeleteID: action.payload}
         case 'TRIP_TO_DELETE_CLEARED':
             return {...state, tripToDeleteID: action.payload}
+        case 'TOGGLE_GALLERY_MODAL':
+            return {...state, galleryModalIsShowing: !state.galleryModalIsShowing}
         default:
             return state
     }

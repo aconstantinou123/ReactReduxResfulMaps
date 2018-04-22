@@ -3,6 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { DateRange } from 'react-date-range'
 import { addToMyTrips, addPhotoToMyTrips } from '../actions/my_trips_action'
+import DropzoneComponent from 'react-dropzone-component'
+import { ToastContainer, toast } from 'react-toastify'
+import { css } from 'glamor';
+import '../../node_modules/react-dropzone-component/styles/filepicker.css'
+import '../../node_modules/dropzone/dist/min/dropzone.min.css'
 
 class AddToTripsModal extends Component{
   constructor(props){
@@ -17,16 +22,7 @@ class AddToTripsModal extends Component{
     this.handleChange = this.handleChange.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
     this.submitTrip = this.submitTrip.bind(this)
-    this.fileChangedHandler = this.fileChangedHandler.bind(this)
   }
-
-  fileChangedHandler(event){
-    this.setState({
-      photos: this.state.photos.concat(event.target.files[0]) 
-    })
-  }
-
-
 
   handleSelect(range){
     console.log(range);
@@ -42,6 +38,16 @@ class AddToTripsModal extends Component{
     })
   }
 
+  notify(){
+    toast.info("Added To My Trips!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: css({
+            background: '#d59563',
+            borderRadius: '10px'
+          })
+      });
+    }
+
   submitTrip(event){
     event.preventDefault()
     const trip = {
@@ -54,10 +60,25 @@ class AddToTripsModal extends Component{
       photos: this.state.photos
     }
     this.props.addPhotoToMyTrips(trip)
+    this.notify()
     this.props.toggleModal()
   }
 
     render(){ 
+
+      var componentConfig = {
+        iconFiletypes: ['.jpg', '.png', '.gif'],
+        showFiletypeIcon: true,
+        postUrl: 'null'
+       }
+
+    var djsConfig = { autoProcessQueue: false }
+    var eventHandlers = { addedfile: (file) => 
+      this.setState({
+      photos: this.state.photos.concat(file) 
+    })}
+    console.log(this.state)
+     
     if(this.props.myTrips.modalIsShowing){
         return(
         <div className="backdrop">
@@ -74,13 +95,16 @@ class AddToTripsModal extends Component{
               <h3>Description of your trip</h3>
               <textarea id="description" rows='10' cols='20' onChange={this.handleChange}></textarea>
               <h3>Pictures</h3>
-              <input type="file"  accept="image/*" onChange={this.fileChangedHandler}/>
+              <DropzoneComponent config={componentConfig}
+                       eventHandlers={eventHandlers}
+                       djsConfig={djsConfig} />
               <div className='modal-button-div'>
                   <input className='modal-button' type='submit' onClick={this.props.toggleModal} value='Cancel'/>
                   <input className='modal-button' type='submit' onClick={this.submitTrip} value='Add to My Trips'/>
               </div>
             </form>
         </div>
+          <ToastContainer hideProgressBar={true} autoClose={3000}/>
       </div>
         )
     }

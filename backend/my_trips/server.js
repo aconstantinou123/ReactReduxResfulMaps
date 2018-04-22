@@ -14,6 +14,7 @@ server.use(cors());
 server.use(parser.json({limit: '10mb'}));
 server.use(parser.urlencoded({extended:true}));
 server.use(express.static(path.join(__dirname, 'files')))
+// server.use(multer({ storage: storage }).array('tripPictures', 12))
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,13 +25,13 @@ var storage = multer.diskStorage({
   }
 })
  
-var upload = multer({ storage: storage }).any()
+var upload = multer({ storage: storage })
 
 
 MongoClient.connect(dbUrl, function (err, client) {
   if(err){
     console.log(err);
-    return;
+    return
   }
 
   const db = client.db('favourite_countries');
@@ -53,18 +54,14 @@ MongoClient.connect(dbUrl, function (err, client) {
   });
 
   //POST
- 
-server.post('/api/countries/files', function (req, res) {
-  console.log(req.body)
-  upload(req, res, function (err) {
+ server.post('/api/countries/files', upload.array('tripPictures', 12), function(req, res){
+   console.log(res)
     if (err) {
       res.json({
         error: err
       })
       return
     }
-    console.log("Files: ", req.files)
-    console.log("Body: ", req.body)
     db.collection('my_trips').save({
           flag: req.body.flag,
           startDate: req.body.startDate,
@@ -82,9 +79,9 @@ server.post('/api/countries/files', function (req, res) {
             res.status(201);
             res.json(result);
             console.log('add to trips')
+          })
         })
-      })
-    })
+  
 
   //DELETE
 

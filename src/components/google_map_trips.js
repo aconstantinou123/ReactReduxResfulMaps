@@ -5,10 +5,8 @@ import { mapStyling } from '../google_map-styles'
 export class GoogleMapTrips extends Component {
 
     renderMarker(myTrips){
-        console.log(myTrips)
         return myTrips.map(trip => {
             const latlngArray = trip.latlng.split(',').map(Number)
-            console.log(latlngArray)
             return <Marker key={trip._id}
                 position={{lat: latlngArray[0], lng: latlngArray[1]}}
                />
@@ -20,7 +18,6 @@ export class GoogleMapTrips extends Component {
             width: '150vh',
             height: '100vh'
           }
-        console.log(this.props.myTrips)
         return(
             <div style={style}>
                 <div className='map-title'>

@@ -125,6 +125,10 @@ body {
     top: 10px;
 }
 
+.country_info .left .home_link a {
+   padding-right: 10px;
+}
+
 .country_info .left img {
     width: 320px;
     padding: 0px;
@@ -289,8 +293,6 @@ a:hover {
     width: 60vw;
     height: 90vh;
     min-height: 300;
-    margin: auto;
-    margin-top: 5vh;
     padding: 30;
     overflow-y: scroll;
     overflow-x: scroll;
@@ -298,11 +300,19 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    position: fixed;
+    margin-top: -45vh;
+    margin-left: -60vh;
+    background-color: lightgray;
+    border: #17263c solid 1px;
 }
 
 .modal h1 {
     text-align: center;
-    padding-top: 190px;
+    padding-top: 380px;
 }
 
 .modal h3 {
@@ -371,6 +381,48 @@ a:hover {
 .delete-modal button {
     margin-top: 20px;
     margin-left: 10px;
+    padding: 10px 24px;
+    background-color: #746855;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #242f3e;
+    outline: none;
+}
+
+/* GALLERY */
+
+.gallery-modal {
+    z-index: 2;
+    border-radius: 5;
+    width: 80vw;
+    height: 90vh;
+    min-height: 300;
+    margin: auto;
+    padding: 30;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -45vh;
+    margin-left: -75vh;
+    background-color: lightgray;
+    border: #17263c solid 1px;
+}
+
+.gallery-modal img {
+    width: 70vw;
+}
+
+.gallery-modal button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
     padding: 10px 24px;
     background-color: #746855;
     font-size: 12px;

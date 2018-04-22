@@ -93,6 +93,8 @@ class CountryInfo extends Component {
                     <ToastContainer hideProgressBar={true} autoClose={3000}/>
                     <div className='home_link'>
                         <Link to={'/'}>Home</Link>
+                        <Link to={'/my_trips'}>My Trips</Link>
+                        <Link to={'/favourites'}>Favourites</Link>
                     </div>
                 </div>
                 <div className='right'>
