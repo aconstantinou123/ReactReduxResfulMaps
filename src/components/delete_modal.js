@@ -5,10 +5,6 @@ import { toggleDeleteModal, clearTripToDeleteID, deleteTrip } from '../actions/m
 
 class DeleteModal extends Component {
 
-componentWillMount(){
-    console.log(this.props.myTrips)
-}
-
 handleDeleteClicked(){
     this.props.deleteTrip(this.props.myTrips.tripToDeleteID)
     this.props.toggleDeleteModal()

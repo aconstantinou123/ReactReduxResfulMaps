@@ -11,10 +11,6 @@ class FavouritesList extends Component {
         this.props.getFavourites()
     }
 
-    componentDidUpdate(){
-        console.log(this.props.favourites.favouriteCountries)
-    }
-
     mapCountries = (favouriteCountries) => {
         if(!this.props.favourites.favouritesNotFound){
             return favouriteCountries.map(country => {

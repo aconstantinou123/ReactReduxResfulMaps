@@ -18,7 +18,6 @@ class Trip extends Component {
         const{
             trip
         } = this.props
-        console.log(trip)
         const imgUrls = []
         trip.photos.forEach(photo => {
           return imgUrls.push(

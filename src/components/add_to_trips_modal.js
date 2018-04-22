@@ -25,7 +25,6 @@ class AddToTripsModal extends Component{
   }
 
   handleSelect(range){
-    console.log(range);
     this.setState({
       startDate: range.startDate,
       endDate: range.endDate
@@ -77,7 +76,6 @@ class AddToTripsModal extends Component{
       this.setState({
       photos: this.state.photos.concat(file) 
     })}
-    console.log(this.state)
      
     if(this.props.myTrips.modalIsShowing){
         return(

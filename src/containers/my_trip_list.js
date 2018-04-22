@@ -24,7 +24,6 @@ componentDidRecieveProps(){
 
 componentDidUpdate(prevProps){
     if(this.props.myTrips.myTripsFound.length !== prevProps.myTrips.myTripsFound.length){
-        console.log('props changed')
         this.notify()
     }
 }

@@ -4,10 +4,6 @@ import Country from '../components/country';
 
 class CountriesList extends Component {
 
-    componentWillReceiveProps(){
-        console.log(this.props.countries.countriesFound)
-    }
-
     mappedCountries = (countries) => {
         if(this.props.countries.countryNotFound === true){
             return <div className='country_not_found'>Country not found!</div>
@@ -31,7 +27,6 @@ class CountriesList extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
     return{
         countries: state.countries
     }

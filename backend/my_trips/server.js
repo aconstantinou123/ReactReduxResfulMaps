@@ -6,7 +6,6 @@ const ObjectID = require('mongodb').ObjectID;
 const cors = require('cors');
 const { dbUrl } = require('./config/database');
 const multer = require('multer');
-const axios = require('axios')
 var path = require('path');
 
 server.use(cors());
@@ -14,7 +13,6 @@ server.use(cors());
 server.use(parser.json({limit: '10mb'}));
 server.use(parser.urlencoded({extended:true}));
 server.use(express.static(path.join(__dirname, 'files')))
-// server.use(multer({ storage: storage }).array('tripPictures', 12))
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -108,7 +106,6 @@ MongoClient.connect(dbUrl, function (err, client) {
       }
       res.status(204);
       res.send();
-
       console.log('database deleted');
     });
    }
