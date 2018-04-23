@@ -119,7 +119,7 @@ class CountryInfo extends Component {
     render(){
         return(
             <div>
-            {this.renderCountryInfo(this.props.countryInfo)}
+                {this.renderCountryInfo(this.props.countryInfo)}
             </div>
         )
     }

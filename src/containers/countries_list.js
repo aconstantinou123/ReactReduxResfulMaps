@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Country from '../components/country';
+import VideoPlayer from '../components/video_player';
 
 class CountriesList extends Component {
 
@@ -18,11 +19,17 @@ class CountriesList extends Component {
     }
 
     render(){
+        console.log(this.props.countries.countriesFound)
+        if(this.props.countries.countriesFound.length !== 0){
            return(
             <div>
                 <div>{this.mappedCountries(this.props.countries.countriesFound)}</div>
             </div>
             )
+        }
+        else return (
+            <VideoPlayer/>
+        )
     }
 }
 
