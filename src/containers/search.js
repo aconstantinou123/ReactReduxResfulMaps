@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { listCountries } from '../actions/country_action'
 import { Link } from 'react-router-dom'
+import { logout } from '../utils/AuthService';
 
 class Search extends Component {
     constructor(props){
@@ -29,6 +30,7 @@ class Search extends Component {
                 <div className='main-page-link'>
                     <Link to='/favourites'>Favourites</Link>
                     <Link to='/my_trips'>My Trips</Link>
+                    <Link onClick={logout} className='log-out-link' to='/'>Log out</Link>
                 </div>
                 <div className='search_bar'>
                     <div className='title_text'>Search for a country</div>

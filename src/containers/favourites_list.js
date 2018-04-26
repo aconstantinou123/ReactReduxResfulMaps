@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { getFavourites } from '../actions/favourites_action'
 import { Link } from 'react-router-dom'
 import Country from '../components/country'
+import { logout } from '../utils/AuthService';
 
 class FavouritesList extends Component {
 
@@ -29,6 +30,8 @@ class FavouritesList extends Component {
             <div>
                 <div className='home-link'>
                     <Link to='/home'>Home</Link>
+                    <Link to='/my_trips'>My Trips</Link>
+                    <Link onClick={logout} className='log-out-link' to='/'>Log out</Link>
                 </div>
                 <div className='favourites_title'>
                     <h1>My Bucket List</h1>

@@ -11,6 +11,7 @@ import { listAllTrips } from '../actions/my_trips_action'
 import Trip from '../components/trip'
 import { GoogleMapTrips } from '../components/google_map_trips';
 import DeleteModal from '../components/delete_modal';
+import { logout } from '../utils/AuthService';
 
 class MyTripList extends Component {
 
@@ -23,7 +24,7 @@ componentDidRecieveProps(){
 }
 
 componentDidUpdate(prevProps){
-    if(this.props.myTrips.myTripsFound.length !== prevProps.myTrips.myTripsFound.length){
+    if(this.props.myTrips.myTripsFound.length < prevProps.myTrips.myTripsFound.length){
         this.notify()
     }
 }
@@ -59,6 +60,7 @@ renderTrips(myTrips){
                  <div className='main-page-link'>
                     <Link to='/home'>Home</Link>
                     <Link to='/favourites'>Favourites</Link>
+                    <Link onClick={logout} className='log-out-link' to='/'>Log out</Link>
                 </div>
                 <div className='favourites_title'>
                     <h1>My Trips</h1>

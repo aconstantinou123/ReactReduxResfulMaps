@@ -14,12 +14,17 @@ body {
 /* SEARCH */
 
 .main-page-link {
+    display: flex;
     background-color: #242f3e;
     padding-top: 10px;
     padding-left: 10px;
     font-size: 18px;
     margin: 0px;
     padding-bottom: 0px;
+}
+
+.main-page-link .log-out-link{
+    margin-left: auto;
 }
 
 .main-page-link a {
@@ -261,10 +266,19 @@ a:hover {
 }
 
 .home-link {
+    display: flex;
     background-color: #242f3e;
     padding-top: 10px;
-    padding-left: 10px;
+    padding-right: 10px;
     font-size: 18px;
+}
+
+.home-link a {
+    padding-left: 10px;
+}
+
+.home-link .log-out-link {
+    margin-left: auto;
 }
 
 .map-title{
@@ -434,6 +448,50 @@ a:hover {
 
 /* VIDEOPLAYER */
 
-.video-player {
-   
+/* TITLEHEADER  */
+
+.title-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #242f3e;
+}
+
+.title-header h1 {
+    color: cornsilk;
+}
+
+/* LOGIN */
+
+.login-surrounding{
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    display: flex;
+    border-radius: 10px;
+    z-index: 2;
+    border-radius: 5;
+    width: 30vw;
+    height: 20vh;
+    padding: 30;
+    justify-content: space-evenly;
+    position: fixed;
+    margin-top: 30vh;
+    background-color:rgb(36, 47, 62, 0.35);
+}
+
+.login-box button {
+    margin-top: 6vh;
+    padding: 20px 36px;
+    background-color: cornsilk;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    color: #242f3e;
+    outline: none;
+}
+
+.login-box button:hover {
+    background-color: #d59563;
 }
