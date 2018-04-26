@@ -57,7 +57,7 @@ renderTrips(myTrips){
         return(
             <div>
                  <div className='main-page-link'>
-                    <Link to='/'>Home</Link>
+                    <Link to='/home'>Home</Link>
                     <Link to='/favourites'>Favourites</Link>
                 </div>
                 <div className='favourites_title'>

@@ -28,7 +28,8 @@ class CountriesList extends Component {
             )
         }
         else return (
-            <VideoPlayer/>
+            null
+            // <VideoPlayer/>
         )
     }
 }

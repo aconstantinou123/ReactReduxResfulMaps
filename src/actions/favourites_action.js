@@ -1,10 +1,12 @@
 import axios from 'axios'
+import { getAccessToken } from '../utils/AuthService'
 
 const FAVOURITES_URL = 'http://localhost:5000/api/countries'
 
 export function getFavourites() {
+    console.log(getAccessToken())
     return function(dispatch){
-        axios.get(`${FAVOURITES_URL}`)
+        axios.get(`${FAVOURITES_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` }})
         .then((response) => {
             dispatch({type: 'GET_ALL_FAVOURITES', payload: response.data})
         }).catch((err) => {
@@ -24,7 +26,7 @@ export function addToFavourites(country){
             name: country.name,
             nativeName: country.nativeName,
             region: country.region
-        }).then((response) => {
+        }, { headers: { Authorization: `Bearer ${getAccessToken()}` }}).then((response) => {
             dispatch({type: 'FAVOURITE_COUNTRY_ADDED', payload: response.data})
         }).catch((err) => {
             dispatch({type: 'FAVOURITE_COUNTRY_NOT_ADDED', payload: err})

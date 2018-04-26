@@ -1,25 +1,20 @@
 {
-  "name": "backend",
+  "name": "authentication",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seeds": "node run_seeds.js",
     "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "webpack": "^4.5.0"
-  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
-    "jwks-rsa": "^1.2.1",
-    "mongodb": "^3.0.5"
+    "jwks-rsa": "^1.2.1"
   }
 }

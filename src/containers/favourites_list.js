@@ -27,7 +27,7 @@ class FavouritesList extends Component {
         return(
             <div>
                 <div className='home-link'>
-                    <Link to='/'>Home</Link>
+                    <Link to='/home'>Home</Link>
                 </div>
                 <div className='favourites_title'>
                     <h1>My Bucket List</h1>

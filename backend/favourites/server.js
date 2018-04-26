@@ -6,11 +6,25 @@ const ObjectID = require('mongodb').ObjectID;
 const cors = require('cors');
 const { dbUrl } = require('./config/database')
 const { favouriteCountries } = require('./seeds')
+const jwt = require('express-jwt')
+const jwks = require('jwks-rsa')
 
 server.use(cors());
 
 server.use(parser.json());
 server.use(parser.urlencoded({extended:true}));
+
+const authCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://holidaytracker.eu.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'https://favourite-countries.com',
+  issuer: "https://holidaytracker.eu.auth0.com/",
+  algorithms: ['RS256']
+})
 
 MongoClient.connect(dbUrl, function (err, client) {
   if(err){
@@ -23,7 +37,8 @@ MongoClient.connect(dbUrl, function (err, client) {
 
   //GET ALL
 
-  server.get('/api/countries', function (req, res) {
+  server.get('/api/countries', authCheck, function (req, res) {
+    console.log(req)
     db.collection('countries').find().toArray(function (err, result) {
       if (err) {
         console.log(err);
@@ -39,7 +54,7 @@ MongoClient.connect(dbUrl, function (err, client) {
 
   //POST
 
-  server.post('/api/countries/', function(req, res) {
+  server.post('/api/countries/', authCheck, function(req, res) {
     db.collection('countries').find({alpha3Code: req.body.alpha3Code}).toArray(function(err, result){
     if (result.length !== 0){
             console.log(result)
@@ -63,7 +78,7 @@ MongoClient.connect(dbUrl, function (err, client) {
 
   //DELETE
 
-  server.delete('/api/countries', function (req, res) {
+  server.delete('/api/countries', authCheck, function (req, res) {
     db.collection('countries').deleteMany(function(err){
       if(err){
         console.log(err);

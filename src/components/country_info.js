@@ -92,7 +92,7 @@ class CountryInfo extends Component {
                     <button className='favourites-button' onClick={this.handleAddToTripsClick.bind(this)}>Add To My Trips</button>
                     <ToastContainer hideProgressBar={true} autoClose={3000}/>
                     <div className='home_link'>
-                        <Link to={'/'}>Home</Link>
+                        <Link to={'/home'}>Home</Link>
                         <Link to={'/my_trips'}>My Trips</Link>
                         <Link to={'/favourites'}>Favourites</Link>
                     </div>

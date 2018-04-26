@@ -7,6 +7,8 @@ const cors = require('cors');
 const { dbUrl } = require('./config/database');
 const multer = require('multer');
 var path = require('path');
+const jwt = require('express-jwt')
+const jwks = require('jwks-rsa')
 
 server.use(cors());
 
@@ -25,6 +27,18 @@ var storage = multer.diskStorage({
  
 var upload = multer({ storage: storage })
 
+const authCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://holidaytracker.eu.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'https://favourite-countries.com',
+  issuer: "https://holidaytracker.eu.auth0.com/",
+  algorithms: ['RS256']
+})
+
 
 MongoClient.connect(dbUrl, function (err, client) {
   if(err){
@@ -37,7 +51,7 @@ MongoClient.connect(dbUrl, function (err, client) {
 
   //GET ALL
 
-  server.get('/api/countries', function (req, res) {
+  server.get('/api/countries', authCheck, function (req, res) {
     db.collection('my_trips').find().toArray(function (err, result) {
       if (err) {
         console.log(err);
@@ -52,7 +66,7 @@ MongoClient.connect(dbUrl, function (err, client) {
   });
 
   //POST
- server.post('/api/countries/files', upload.array('tripPictures', 12), function(req, res){
+ server.post('/api/countries/files', upload.array('tripPictures', 12), authCheck, function(req, res){
    console.log(res)
     if (err) {
       res.json({
@@ -83,7 +97,7 @@ MongoClient.connect(dbUrl, function (err, client) {
 
   //DELETE
 
-  server.delete('/api/countries', function (req, res) {
+  server.delete('/api/countries', authCheck, function (req, res) {
     console.log(req.query.id)
     if(req.query.id){
       db.collection('my_trips').deleteOne({_id: ObjectID(req.query.id)}, function(err){
