@@ -1,6 +1,7 @@
 module.exports = {
     myTrips: [
         {
+            "userId": 'auth0|5ae191f79208b8058a4997ce',
             "flag": "https://restcountries.eu/data/cze.svg",
             "startDate": "Thu Mar 01 2018 00:00:00 GMT+0000",
             "endDate": "Tue Apr 17 2018 23:59:59 GMT+0100",
@@ -20,7 +21,7 @@ module.exports = {
                 }
             ]
         },
-        {
+        {   "userId": 'auth0|5ae191f79208b8058a4997ce',
             "flag": "https://restcountries.eu/data/bol.svg",
             "startDate": "Wed Mar 21 2018 00:00:00 GMT+0000",
             "endDate": "Tue Apr 10 2018 23:59:59 GMT+0100",
@@ -40,7 +41,7 @@ module.exports = {
                 }
             ]
         },
-        {
+        {   "userId": 'auth0|5ae191f79208b8058a4997ce',
             "flag": "https://restcountries.eu/data/chn.svg",
             "startDate": "Wed Apr 12 2017 00:00:00 GMT+0100",
             "endDate": "Wed May 31 2017 23:59:59 GMT+0100",
@@ -60,7 +61,8 @@ module.exports = {
                 }
             ]
         },
-        {
+        {   
+            "userId": "auth0|5ae1116b17688b753df744a6",
             "flag": "https://restcountries.eu/data/vnm.svg",
             "startDate": "Tue Jan 24 2017 00:00:00 GMT+0000",
             "endDate": "Tue Feb 14 2017 23:59:59 GMT+0000",
@@ -81,6 +83,7 @@ module.exports = {
             ]
         },
         {
+            "userId": "auth0|5ae1116b17688b753df744a6",
             "flag": "https://restcountries.eu/data/khm.svg",
             "startDate": "Wed Mar 15 2017 00:00:00 GMT+0000",
             "endDate": "Wed Apr 05 2017 23:59:59 GMT+0100",
@@ -101,6 +104,7 @@ module.exports = {
             ]
         },
         {
+            "userId": "auth0|5ae1116b17688b753df744a6",
             "flag": "https://restcountries.eu/data/usa.svg",
             "startDate": "Thu Oct 06 2016 00:00:00 GMT+0100",
             "endDate": "Mon Nov 07 2016 23:59:59 GMT+0000",

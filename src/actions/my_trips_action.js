@@ -1,10 +1,11 @@
 import axios from 'axios'
+import { getAccessToken } from '../utils/AuthService'
 
 const MY_TRIPS_URL = 'http://localhost:5001/api/countries'
 
 export function listAllTrips() {
     return function(dispatch){
-        axios.get(`${MY_TRIPS_URL}`)
+        axios.get(`${MY_TRIPS_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` }})
         .then((response) => {
             dispatch({type: 'GET_ALL_TRIPS', payload: response.data})
         }).catch((err) => {
@@ -15,7 +16,7 @@ export function listAllTrips() {
 
     export function deleteTrip(tripId){
         return function(dispatch){
-            axios.delete(`${MY_TRIPS_URL}`, {params: { id: tripId }})
+            axios.delete(`${MY_TRIPS_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` }, params: { id: tripId }})
             .then(response => {
                 dispatch(listAllTrips())
                 dispatch({type: 'TRIP_DELETED'})
@@ -40,8 +41,10 @@ export function listAllTrips() {
             data.append('description', trip.description)
             axios.post(`${MY_TRIPS_URL}/files`, data, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',}
-                }).then((response) => {
+                    'Content-Type': 'multipart/form-data',
+                     Authorization: `Bearer ${getAccessToken()}`}
+                }
+            ).then((response) => {
                 console.log(data)
             dispatch({type: 'TRIP_PHOTO_ADDED', payload: response.data})
                     }).catch((err) => {

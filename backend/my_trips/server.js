@@ -52,7 +52,7 @@ MongoClient.connect(dbUrl, function (err, client) {
   //GET ALL
 
   server.get('/api/countries', authCheck, function (req, res) {
-    db.collection('my_trips').find().toArray(function (err, result) {
+    db.collection('my_trips').find({userId: req.user.sub}).toArray(function (err, result) {
       if (err) {
         console.log(err);
         res.status(500);
@@ -75,6 +75,7 @@ MongoClient.connect(dbUrl, function (err, client) {
       return
     }
     db.collection('my_trips').save({
+          userId: req.user.sub,
           flag: req.body.flag,
           startDate: req.body.startDate,
           endDate: req.body.endDate,

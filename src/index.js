@@ -14,6 +14,8 @@ import FavouritesList from './containers/favourites_list';
 import MyTripList from './containers/my_trip_list';
 import Login from './containers/login';
 import CallBack from './components/callback';
+import { requireAuth } from './utils/AuthService'
+
 
 const history = createHistory()
 
@@ -25,10 +27,10 @@ ReactDOM.render(
         <Router history={history}>
             <div>
                 <Route exact path='/' component={Login}/>
-                <Route path='/home' component={App}/>
-                <Route path ='/country/:id' component={CountryInfo}/>
-                <Route path ='/favourites' component={FavouritesList}/>
-                <Route path ='/my_trips' component={MyTripList}/>
+                <Route path='/home' component={App} onEnter={requireAuth}/>
+                <Route path ='/country/:id' component={CountryInfo} onEnter={requireAuth}/>
+                <Route path ='/favourites' component={FavouritesList} onEnter={requireAuth}/>
+                <Route path ='/my_trips' component={MyTripList} onEnter={requireAuth}/>
                 <Route path ='/callback' component={CallBack}/>
             </div>
          </Router>

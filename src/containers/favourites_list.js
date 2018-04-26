@@ -9,6 +9,7 @@ class FavouritesList extends Component {
 
     componentWillMount(){
         this.props.getFavourites()
+        console.log(this)
     }
 
     mapCountries = (favouriteCountries) => {

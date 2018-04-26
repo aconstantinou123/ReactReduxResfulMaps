@@ -1,5 +1,6 @@
 module.exports = {
     favouriteCountries: [{
+        userId: 'auth0|5ae1116b17688b753df744a6',
         alpha3Code: "CHN",
         area: 9640011,
         borders: ["AFG", "BTN", "MMR", "HKG", "IND", "KAZ", "PRK", "KGZ", "LAO", "MAC", "MNG", "PAK", "RUS", "TJK", "VNM"],
@@ -10,7 +11,8 @@ module.exports = {
         region: "Asia"
     },
 
-    {
+    {   
+        userId: 'auth0|5ae1116b17688b753df744a6',
         alpha3Code: "RUS",
         area: 17124442,
         borders: ["AZE", "BLR", "CHN", "EST", "FIN", "GEO", "KAZ", "PRK", "LVA", "LTU", "MNG", "NOR", "POL", "UKR"],
@@ -22,6 +24,7 @@ module.exports = {
     },
 
     {
+        userId: 'auth0|5ae1116b17688b753df744a6',
         alpha3Code: "VNM",
         area: 331212,
         borders: ["KHM", "CHN", "LAO"],
@@ -30,5 +33,6 @@ module.exports = {
         name:"Viet Nam",
         nativeName: "Việt Nam",
         region: "Asia"
-    }]
+    },
+    ]
 }

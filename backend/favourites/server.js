@@ -38,8 +38,8 @@ MongoClient.connect(dbUrl, function (err, client) {
   //GET ALL
 
   server.get('/api/countries', authCheck, function (req, res) {
-    console.log(req)
-    db.collection('countries').find().toArray(function (err, result) {
+    console.log(req.user.sub)
+    db.collection('countries').find({userId: req.user.sub}).toArray(function (err, result) {
       if (err) {
         console.log(err);
         res.status(500);
@@ -55,15 +55,24 @@ MongoClient.connect(dbUrl, function (err, client) {
   //POST
 
   server.post('/api/countries/', authCheck, function(req, res) {
-    db.collection('countries').find({alpha3Code: req.body.alpha3Code}).toArray(function(err, result){
+    console.log(req.user.sub)
+    db.collection('countries').find({userId: req.user.sub, alpha3Code: req.body.alpha3Code}).toArray(function(err, result){
     if (result.length !== 0){
-            console.log(result)
             res.status(409);
             res.send()
             return
     }
     else{
-      db.collection('countries').save(req.body, function (err, result){
+      db.collection('countries').save({
+        userId: req.user.sub,
+        alpha3Code: req.body.alpha3Code,
+        area: req.body.area,
+        borders: req.body.borders,
+        flag: req.body.flag,
+        latlng: req.body.latlng,
+        name: req.body.name,
+        nativeName: req.body.nativeName,
+        region: req.body.region}, function (err, result){
       if(err){
               console.log(err);
               res.status(500);
