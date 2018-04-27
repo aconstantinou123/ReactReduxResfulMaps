@@ -34,7 +34,7 @@ const authCheck = jwt({
       jwksRequestsPerMinute: 5,
       jwksUri: 'https://holidaytracker.eu.auth0.com/.well-known/jwks.json'
   }),
-  audience: 'https://favourite-countries.com',
+  aud: 'https://favourite-countries.com',
   issuer: "https://holidaytracker.eu.auth0.com/",
   algorithms: ['RS256']
 })
@@ -107,23 +107,24 @@ MongoClient.connect(dbUrl, function (err, client) {
           res.status(500);
           res.send();
         }
+        console.log(req.body)
         res.status(204);
         res.send();
         console.log('trip deleted');
       });
     }
-    else{
-    db.collection('my_trips').deleteMany(function(err){
-      if(err){
-        console.log(err);
-        res.status(500);
-        res.send();
-      }
-      res.status(204);
-      res.send();
-      console.log('database deleted');
-    });
-   }
+  //   else{
+  //   db.collection('my_trips').deleteMany(function(err){
+  //     if(err){
+  //       console.log(err);
+  //       res.status(500);
+  //       res.send();
+  //     }
+  //     res.status(204);
+  //     res.send();
+  //     console.log('database deleted');
+  //   });
+  //  }
   });
 
   server.listen(5001, function () {

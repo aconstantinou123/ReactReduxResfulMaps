@@ -21,7 +21,7 @@ const authCheck = jwt({
       jwksRequestsPerMinute: 5,
       jwksUri: 'https://holidaytracker.eu.auth0.com/.well-known/jwks.json'
   }),
-  audience: 'https://favourite-countries.com',
+  aud: 'https://favourite-countries.com',
   issuer: "https://holidaytracker.eu.auth0.com/",
   algorithms: ['RS256']
 })

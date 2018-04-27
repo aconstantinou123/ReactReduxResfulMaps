@@ -11,6 +11,7 @@ handleDeleteClicked(){
 }
 
 handleCancelClicked(){
+    console.log(this.props.myTrips)
     this.props.clearTripToDeleteID()
     this.props.toggleDeleteModal()
 }

@@ -29,3 +29,16 @@ services:
       - my_mongodb
     depends_on:
       - my_mongodb
+  frontend:
+    container_name: frontend_holidaytracker
+    build: ./frontend
+    volumes:
+      - ./frontend:/code
+    ports:
+      - "3000:3000"
+    links:
+      - favourites
+      - my_trips
+    depends_on:
+      - favourites
+      - my_trips
