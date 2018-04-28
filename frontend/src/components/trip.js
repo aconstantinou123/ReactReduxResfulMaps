@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { deleteTrip, listAllTrips, toggleDeleteModal, getTripToDeleteID, toggleGalleryModal } from '../actions/my_trips_action'
+import { deleteTrip, listAllTrips, toggleDeleteModal, getTripToDelete, toggleGalleryModal } from '../actions/my_trips_action'
 import CustomGallery from './custom_gallery'
 
 class Trip extends Component {
@@ -35,7 +35,7 @@ class Trip extends Component {
 
     handleDeleteClicked(){
         this.props.toggleDeleteModal()
-        this.props.getTripToDeleteID(this.props.trip._id)
+        this.props.getTripToDelete(this.props.trip)
     }
 
     clearPhotos(){
@@ -88,7 +88,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ toggleGalleryModal, deleteTrip, listAllTrips, toggleDeleteModal, getTripToDeleteID }, dispatch)
+    return bindActionCreators({ toggleGalleryModal, deleteTrip, listAllTrips, toggleDeleteModal, getTripToDelete }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Trip)

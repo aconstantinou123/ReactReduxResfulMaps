@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { toggleDeleteModal, clearTripToDeleteID, deleteTrip } from '../actions/my_trips_action'
+import { toggleDeleteModal, clearTripToDelete, deleteTrip } from '../actions/my_trips_action'
 
 class DeleteModal extends Component {
 
 handleDeleteClicked(){
-    this.props.deleteTrip(this.props.myTrips.tripToDeleteID)
+    this.props.deleteTrip(this.props.myTrips.tripToDelete)
     this.props.toggleDeleteModal()
 }
 
 handleCancelClicked(){
     console.log(this.props.myTrips)
-    this.props.clearTripToDeleteID()
+    this.props.clearTripToDelete()
     this.props.toggleDeleteModal()
 }
 
@@ -41,7 +41,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ toggleDeleteModal, clearTripToDeleteID, deleteTrip }, dispatch)
+    return bindActionCreators({ toggleDeleteModal, clearTripToDelete, deleteTrip }, dispatch)
 }
 
 export default connect(mapStateToProps ,mapDispatchToProps) (DeleteModal)

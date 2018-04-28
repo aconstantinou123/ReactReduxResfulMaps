@@ -9,6 +9,7 @@ const multer = require('multer');
 var path = require('path');
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
+const shell = require('shelljs');
 
 server.use(cors());
 
@@ -99,7 +100,7 @@ MongoClient.connect(dbUrl, function (err, client) {
   //DELETE
 
   server.delete('/api/countries', authCheck, function (req, res) {
-    console.log(req.query.id)
+    const pathToPhotos = path.join(__dirname, 'files')
     if(req.query.id){
       db.collection('my_trips').deleteOne({_id: ObjectID(req.query.id)}, function(err){
         if(err){
@@ -107,24 +108,27 @@ MongoClient.connect(dbUrl, function (err, client) {
           res.status(500);
           res.send();
         }
-        console.log(req.body)
+        req.query.photos.forEach(photo => {
+          shell.rm(`${pathToPhotos}/${photo}`)
+        });
+        shell.echo('Test')
         res.status(204);
         res.send();
         console.log('trip deleted');
       });
     }
-  //   else{
-  //   db.collection('my_trips').deleteMany(function(err){
-  //     if(err){
-  //       console.log(err);
-  //       res.status(500);
-  //       res.send();
-  //     }
-  //     res.status(204);
-  //     res.send();
-  //     console.log('database deleted');
-  //   });
-  //  }
+    else{
+    db.collection('my_trips').deleteMany(function(err){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+      res.status(204);
+      res.send();
+      console.log('database deleted');
+    });
+   }
   });
 
   server.listen(5001, function () {

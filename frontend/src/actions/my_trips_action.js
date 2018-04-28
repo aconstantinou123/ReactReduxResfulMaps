@@ -14,9 +14,13 @@ export function listAllTrips() {
         }
     }
 
-    export function deleteTrip(tripId){
+    export function deleteTrip(trip){
+        const photoFilenames = []
+        trip.photos.forEach(function(photo){
+            photoFilenames.push(photo.filename)
+        })
         return function(dispatch){
-            axios.delete(`${MY_TRIPS_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` }, params: { id: tripId }})
+            axios.delete(`${MY_TRIPS_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` }, params: { id: trip._id, photos: photoFilenames}})
             .then(response => {
                 dispatch(listAllTrips())
                 dispatch({type: 'TRIP_DELETED'})
@@ -89,14 +93,14 @@ export function toggleGalleryModal(){
     }
 }
 
-export function getTripToDeleteID(id){
+export function getTripToDelete(trip){
     return {
         type: 'TRIP_TO_DELETE_SELECTED',
-        payload: id
+        payload: trip
     }
 }
 
-export function clearTripToDeleteID(){
+export function clearTripToDelete(){
     return{
         type: 'TRIP_TO_DELETE_CLEARED',
         payload: null
