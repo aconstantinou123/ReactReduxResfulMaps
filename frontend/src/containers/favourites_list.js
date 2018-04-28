@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getFavourites } from '../actions/favourites_action'
 import { Link } from 'react-router-dom'
-import Country from '../components/country'
+
+
+import { getFavourites, deleteFavourite } from '../actions/favourites_action'
 import { logout } from '../utils/AuthService';
+import FavouriteCountry from '../components/favourite_country';
 
 class FavouritesList extends Component {
 
@@ -16,7 +18,7 @@ class FavouritesList extends Component {
     mapCountries = (favouriteCountries) => {
         if(!this.props.favourites.favouritesNotFound){
             return favouriteCountries.map(country => {
-                return <Country key={country.alpha3Code} country={country}/>
+                return <FavouriteCountry key={country.alpha3Code} country={country} deleteFavourite={this.props.deleteFavourite}/>
              })
         }
         else {
@@ -45,7 +47,7 @@ class FavouritesList extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ getFavourites }, dispatch)
+    return bindActionCreators({ getFavourites, deleteFavourite }, dispatch)
 }
 
 function mapStateToProps(state){

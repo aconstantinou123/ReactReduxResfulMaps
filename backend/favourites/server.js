@@ -88,18 +88,30 @@ MongoClient.connect(dbUrl, function (err, client) {
   //DELETE
 
   server.delete('/api/countries', authCheck, function (req, res) {
-    db.collection('countries').deleteMany(function(err){
-      if(err){
-        console.log(err);
-        res.status(500);
+    if(req.query.id){
+      db.collection('countries').deleteOne({_id: ObjectID(req.query.id)}, function(err){
+        if(err){
+          console.log(err)
+          res.status(500)
+          res.send()
+        }
+        res.status(204)
+        res.send()
+        console.log('favourite deleted')
+      })
+    }
+    else{
+      db.collection('countries').deleteMany(function(err){
+        if(err){
+          console.log(err);
+          res.status(500);
+          res.send();
+        }
+        res.status(204);
         res.send();
-      }
-
-      res.status(204);
-      res.send();
-
-      console.log('database deleted');
-    });
+        console.log('database deleted');
+      });
+    }
   });
 
   server.listen(5000, function () {

@@ -14,6 +14,10 @@ export default function(state = defaultState, action){
             return {...state, favouriteAdded: true}
         case 'FAVOURITE_ADDED_CLEARED':
             return {...state, favouriteAdded: null}
+        case 'FAVOURITE_DELETED':
+            return {...state}
+        case 'FAVOURITE_NOT_DELETED':
+            return {...state}
         default:
             return state
     }

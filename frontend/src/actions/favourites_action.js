@@ -24,6 +24,20 @@ export function addToFavourites(country){
     }
 }
 
+export function deleteFavourite(countryId){
+    return function(dispatch){
+        axios.delete(`${FAVOURITES_URL}`, { headers: { Authorization: `Bearer ${getAccessToken()}` },params: {id: countryId}})
+        .then(response => {
+            dispatch(getFavourites())
+            dispatch({type: 'FAVOURITE_DELETED'})
+        })
+        .catch( err => {
+            dispatch({type: 'FAVOURITE_NOT_DELETED'})
+            console.log(err)
+        })
+    }
+}
+
 export function clearAddedToFavourites(){
     return {
         type: 'FAVOURITE_ADDED_CLEARED'

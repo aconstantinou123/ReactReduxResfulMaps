@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Country = ({ country }) => {
+const FavouriteCountry = ({ country, deleteFavourite }) => {
+
+    const handleDeleteClicked = () => {
+        deleteFavourite(country._id)
+    }
 
     return (
         <div className='country_item'>
@@ -15,9 +19,12 @@ const Country = ({ country }) => {
                     <h4>{country.name}</h4>
                     <h4>{country.region}</h4>
                 </div>
+                <div>
+                    <button onClick={handleDeleteClicked}>Delete from List</button>
+                </div>
             </div>
         </div>
     )
 }
 
-export default Country
+export default FavouriteCountry
