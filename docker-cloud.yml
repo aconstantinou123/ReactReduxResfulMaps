@@ -1,22 +1,3 @@
-favourites:
-  autoredeploy: true
-  image: 'wrathofthetyrant/reactreduxresfulmaps_favourites:latest'
-  links:
-    - mongo
-  ports:
-    - '5000:5000'
-mongo:
-  autoredeploy: true
-  image: 'wrathofthetyrant/mongo:latest'
-  ports:
-    - '27017:27017'
-mytrips:
-  autoredeploy: true
-  image: 'wrathofthetyrant/reactreduxresfulmaps_my_trips:latest'
-  links:
-    - mongo
-  ports:
-    - '5001:5001'
 web:
   autoredeploy: true
   image: 'wrathofthetyrant/reactreduxresfulmaps_frontend:latest'
@@ -25,3 +6,22 @@ web:
     - mytrips
   ports:
     - '3000:3000'
+favourites:
+  autoredeploy: true
+  image: 'wrathofthetyrant/reactreduxresfulmaps_favourites:latest'
+  links:
+    - mongo
+  ports:
+    - '5000:5000'
+mytrips:
+  autoredeploy: true
+  image: 'wrathofthetyrant/reactreduxresfulmaps_my_trips:latest'
+  links:
+    - mongo
+  ports:
+    - '5001:5001'
+mongo:
+  autoredeploy: true
+  image: 'wrathofthetyrant/mongo:latest'
+  ports:
+    - '27017:27017'
