@@ -1,4 +1,4 @@
-web:
+frontend:
   autoredeploy: true
   image: 'wrathofthetyrant/reactreduxresfulmaps_frontend:latest'
   links:

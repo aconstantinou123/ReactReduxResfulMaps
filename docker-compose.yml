@@ -1,15 +1,15 @@
 version: '3'
 services:
-  my_mongodb:
+  mymongodb:
     image: wrathofthetyrant/mongo
     build: ./mongodb
-    container_name: my_mongodb
+    container_name: mymongodb
     ports:
         - '27017:27017'
     volumes:
       - ./mongodb/data:/data/db
   favourites:
-    container_name: favouritesdb
+    container_name: favourites
     build: ./backend/favourites
     image: wrathofthetyrant/reactreduxresfulmaps_favourites
     volumes:
@@ -17,11 +17,11 @@ services:
     ports:
       - "5000:5000"
     links:
-      - my_mongodb
+      - mymongodb
     depends_on:
-      - my_mongodb
-  my_trips:
-    container_name: my_tripsdb
+      - mymongodb
+  mytrips:
+    container_name: mytrips
     build: ./backend/my_trips
     image: wrathofthetyrant/reactreduxresfulmaps_my_trips 
     volumes:
@@ -29,9 +29,9 @@ services:
     ports:
       - "5001:5001"
     links:
-      - my_mongodb
+      - mymongodb
     depends_on:
-      - my_mongodb
+      - mymongodb
   frontend:
     container_name: frontend_holidaytracker
     build: ./frontend
@@ -42,7 +42,7 @@ services:
       - "3000:3000"
     links:
       - favourites
-      - my_trips
+      - mytrips
     depends_on:
       - favourites
-      - my_trips
+      - mytrips

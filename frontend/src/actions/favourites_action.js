@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAccessToken } from '../utils/AuthService'
 
-const FAVOURITES_URL = 'http://localhost:5000/api/countries'
+const FAVOURITES_URL = 'http://178.62.84.64:5000/api/countries'
 
 export function getFavourites() {
     return function(dispatch){

@@ -22,7 +22,7 @@ class Trip extends Component {
         trip.photos.forEach(photo => {
           return imgUrls.push(
               {
-                  src: `http://localhost:5001/${photo.filename}`,
+                  src: `http://178.62.84.64:5001/${photo.filename}`,
                   name: photo.originalname
                })
        });
@@ -49,7 +49,7 @@ class Trip extends Component {
             trip
         } = this.props
     
-        const imgUrl = `http://localhost:5001/${trip.photos[0].filename}`
+        const imgUrl = `http://178.62.84.64:5001/${trip.photos[0].filename}`
        
 
         if(trip){
