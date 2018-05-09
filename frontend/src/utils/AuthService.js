@@ -8,7 +8,7 @@ const browserHistory = createHistory()
 
 const CLIENT_ID = 'mSWcQSKqyQXr51Go45sblBSz5Z6xawKD';
 const CLIENT_DOMAIN = 'holidaytracker.eu.auth0.com';
-const REDIRECT = 'http://myholidaytracker.co.uk:3000/callback';
+const REDIRECT = 'http://localhost/callback';
 const SCOPE = 'read/write:favourite_countries';
 const AUDIENCE = 'https://favourite-countries.com';
 

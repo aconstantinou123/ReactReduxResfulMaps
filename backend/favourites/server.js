@@ -55,7 +55,7 @@ MongoClient.connect(dbUrl, function (err, client) {
   //POST
 
   server.post('/api/countries/', authCheck, function(req, res) {
-    console.log(req.user.sub)
+    console.log(req.body)
     db.collection('countries').find({userId: req.user.sub, alpha3Code: req.body.alpha3Code}).toArray(function(err, result){
     if (result.length !== 0){
             res.status(409);

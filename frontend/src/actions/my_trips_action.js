@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAccessToken } from '../utils/AuthService'
 
-const MY_TRIPS_URL = 'http://178.62.84.64:5001/api/countries'
+const MY_TRIPS_URL = 'http://localhost/mytripsdb/api/countries'
 
 export function listAllTrips() {
     return function(dispatch){
